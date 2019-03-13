@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/Sky.png-7420f3cf7fb3a60b147001a2d99a55db.stex"
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://Sprites/Tiles/Sky.png"
+dest_files=[ "res://.import/Sky.png-7420f3cf7fb3a60b147001a2d99a55db.stex" ]
 
 [params]
 
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

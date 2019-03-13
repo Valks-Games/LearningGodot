@@ -1,74 +1,25 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=12]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=13]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World Complete.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Tiles/DirtAutoTile.tres" type="TileSet" id=3]
 
-[sub_resource type="SpriteFrames" id=2]
+[node name="World" type="Node"]
 
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "Jump",
-"speed": 10.0
-} ]
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-[sub_resource type="RectangleShape2D" id=1]
+position = Vector2( 64, 224 )
 
-custom_solver_bias = 0.0
-extents = Vector2( 14, 28 )
+[node name="World Complete" parent="." index="1" instance=ExtResource( 2 )]
 
-[node name="World" type="Node" index="0"]
+position = Vector2( 480, 128 )
+next_world = "res://World2.tscn"
 
-[node name="Player" type="KinematicBody2D" parent="." index="0"]
-
-position = Vector2( 288, 64 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="AnimatedSprite" parent="Player" index="0"]
-
-frames = SubResource( 2 )
-animation = "Run"
-frame = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
-
-position = Vector2( 0, 4 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="TileMap" type="TileMap" parent="." index="1"]
+[node name="TileMap" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 13 )
-cell_size = Vector2( 32, 32 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
@@ -82,10 +33,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 524289, 0, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 2, 0, 589825, 3, 0, 589826, 4, 0, 589827, 4, 0, 589828, 4, 0, 589829, 4, 0, 589830, 4, 0, 589831, 4, 0, 589832, 4, 0, 589833, 4, 0, 589834, 4, 0, 589835, 4, 0, 589836, 4, 0, 589837, 4, 0, 589838, 4, 0, 589839, 4, 0, 589840, 4, 0, 589841, 5, 0, 655361, 6, 0, 655362, 7, 0, 655363, 7, 0, 655364, 7, 0, 655365, 7, 0, 655366, 7, 0, 655367, 7, 0, 655368, 7, 0, 655369, 7, 0, 655370, 7, 0, 655371, 7, 0, 655372, 7, 0, 655373, 7, 0, 655374, 7, 0, 655375, 7, 0, 655376, 7, 0, 655377, 8, 0 )
-_sections_unfolded = [ "Cell" ]
-__meta__ = {
-"_edit_lock_": true
-}
+tile_data = PoolIntArray( -1, 0, 1, -65536, 0, 65536, -65535, 0, 65536, -65534, 0, 65536, -65533, 0, 65536, -65532, 0, 65536, -65531, 0, 65536, -65530, 0, 65536, -65529, 0, 65536, -65528, 0, 65536, -65527, 0, 65536, -65526, 0, 2, 65535, 0, 131073, 0, 0, 196619, 1, 0, 196619, 2, 0, 196619, 3, 0, 196619, 4, 0, 3, 5, 0, 131072, 6, 0, 131072, 7, 0, 131072, 8, 0, 131072, 9, 0, 4, 10, 0, 131074, 131071, 0, 131073, 65536, 0, 196619, 65537, 0, 196619, 65538, 0, 3, 65539, 0, 131072, 65540, 0, 65538, 65545, 0, 131073, 65546, 0, 131074, 196607, 0, 65546, 131072, 0, 131072, 131073, 0, 131072, 131074, 0, 65538, 131081, 0, 131073, 131082, 0, 131074, 262143, 0, 65541, 196617, 0, 131073, 196618, 0, 131074, 327679, 0, 8, 262144, 0, 65536, 262145, 0, 65536, 262146, 0, 65536, 262147, 0, 65536, 262148, 0, 65536, 262149, 0, 65536, 262150, 0, 65536, 262151, 0, 65536, 262152, 0, 65536, 262153, 0, 65540, 262154, 0, 131074, 393215, 0, 65537, 327680, 0, 131072, 327681, 0, 131072, 327682, 0, 131072, 327683, 0, 131072, 327684, 0, 131072, 327685, 0, 131072, 327686, 0, 131072, 327687, 0, 131072, 327688, 0, 131072, 327689, 0, 131072, 327690, 0, 65538 )
+_sections_unfolded = [ "Collision" ]
 
 
